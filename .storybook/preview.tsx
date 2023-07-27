@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyle from '../src/styles/GlobalStyle';
 import type { Preview } from '@storybook/react';
-import { initialize, mswDecorator } from 'msw-storybook-addon';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { query_client } from '../src/test/utils';
 
@@ -17,6 +17,8 @@ export const parameters: Preview['parameters'] = {
     },
   },
 };
+
+export const loaders: Preview['loaders'] = [mswLoader];
 
 type Decorator = NonNullable<Preview['decorators']>[number];
 
@@ -37,6 +39,6 @@ const globalStoryDecorator: Decorator = (Story) => {
   );
 };
 
-const decorators: Preview['decorators'] = [mswDecorator, queryClientDecorator, globalStoryDecorator];
+const decorators: Preview['decorators'] = [queryClientDecorator, globalStoryDecorator];
 
 export { decorators };

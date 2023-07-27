@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 
+/**
+ * @MEMO
+ * Server Side에는 MSW가 없어 Hydration Error 발생하여 사용
+ */
 const useAwaitMSWinit = () => {
   const [msw_load_complete, setMswLoadComplete] = useState(false);
 
